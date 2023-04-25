@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../layui-v2.6.8/layui/css/layui.css" />
+    <script src="../layui-v2.6.8/layui/layui.js"></script>
+  </head>
+  <style>
+    body {
+      background-size: cover;
+    }
+    .layui-nav {
+      width: 240px;
+      height: 1000px;
+    }
+    #background-color {
+      width: 240px;
+      height: 40px;
+      background-color: #cccccc2f;
+      color: snow;
+      border-color: #cccccc2f;
+    }
+    .layui-box {
+      position: absolute;
+      /* position: fixed; */
+      top: 50%;
+      left: 50%;
+      width: 70%;
+      transform: translate(-40%, -100%);
+      margin-top: 650px;
+      margin-left: 25px;
+      /* margin-bottom: 100%; */
+      float: right;
+      display: block;
+    }
+    .layui-table th,
+    .layui-table td {
+      text-align: center;
+      width: 221px;
+      border-color: black;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    .layui-table tbody tr:hover {
+      background-color: #ccc;
+    }
+    span {
+      font-size: 20px;
+      color: rgb(226, 19, 19);
+      font-weight: 900;
+    }
+    /* input[type="checkbox"] {
+      display: block;
+    } */
+    #add {
+      width: 500px;
+      height: 500px;
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999999;
+      display: none;
+    }
+    form {
+      text-align: center;
+    }
+    label {
+      font-size: 15px;
+      color: snow;
+    }
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 900;
+      color: snow;
+    }
+  </style>
+  <body>
+    <!-- <button id="background-color">单击切换颜色</button> -->
+    <ul class="layui-nav layui-nav-tree" lay-filter="test" id="layui-nav">
+      <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+      <!-- <li class="layui-nav-item layui-nav-itemed">
+        <a href="javascript:;">默认展开</a>
+        <dl class="layui-nav-child">
+          <dd>
+            <a
+              href="javascript:;"
+              id="box1
+            "
+              >选项1</a
+            >
+          </dd>
+          <dd><a href="javascript:;">选项2</a></dd>
+          <dd><a href="">跳转</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">解决方案</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">移动模块</a></dd>
+          <dd><a href="">后台模版</a></dd>
+          <dd><a href="">电商平台</a></dd>
+        </dl>
+      </li> -->
+      <!-- <li class="layui-nav-item"><a href="">产品</a></li>
+      <li class="layui-nav-item"><a href="">大数据</a></li> -->
+      <li class="layui-nav-item">
+        <button id="background-color">单击切换颜色</button>
+      </li>
+    </ul>
+    <div id="add">
+      <h2>添加歌手</h2>
+      <form class="layui-form" action="" lay-filter="testform">
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 歌曲名称： </label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="title"
+              id="search-name"
+              lay-verify="title"
+              style="width: 200px"
+              autocomplete="off"
+              placeholder="请输入歌曲"
+              class="layui-input"
+              value="" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 艺术家:</label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="title"
+              id="search-atist"
+              lay-verify="title"
+              style="width: 200px"
+              autocomplete="off"
+              placeholder="请输入艺术家的名字"
+              class="layui-input"
+              value="" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 专辑名称： </label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="title"
+              id="search-album"
+              lay-verify="title"
+              style="width: 200px"
+              autocomplete="off"
+              placeholder="请输入专辑名"
+              class="layui-input"
+              value="" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 年代 </label>
+          <div class="layui-input-block">
+            <input
+              type="number"
+              name="title"
+              id="number"
+              lay-verify="title"
+              style="width: 200px"
+              autocomplete="off"
+              placeholder="请输入年份"
+              class="layui-input"
+              value="" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"> 类型： </label>
+          <div class="layui-input-block">
+            <input
+              type="text"
+              name="title"
+              id="search-mold"
+              lay-verify="title"
+              style="width: 200px"
+              autocomplete="off"
+              placeholder="请输入类型"
+              class="layui-input"
+              value="" />
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">
+              立即提交
+            </button>
+            <button
+              type="reset"
+              class="layui-btn layui-btn-primary"
+              style="color: snow"
+              id="cancel">
+              取消
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="layui-box">
+      <button class="layui-btn" id="addceil">添加数据</button>
+      <div id="succes">
+        <div
+          class="layui-input-block"
+          style="float: left; margin-left: 0px; margin-right: 10px">
+          <input
+            type="text"
+            name="title"
+            id="search"
+            lay-verify="title"
+            style="width: 200px"
+            autocomplete="off"
+            placeholder="请输入名字"
+            class="layui-input" />
+        </div>
+        <button type="button" class="layui-btn" id="query-list">查询</button>
+      </div>
+
+      <table class="layui-table">
+        <colgroup>
+          <col width="150" />
+          <col width="200" />
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th><input type="checkbox" name="" id="show" /></th>
+            <th>ID</th>
+            <th>歌曲名</th>
+            <th>作者</th>
+            <th>专辑</th>
+            <th>年份</th>
+            <th>类型</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button
+        type="button"
+        class="layui-btn layui-btn-sm layui-btn-primary"
+        id="left">
+        <i class="layui-icon layui-icon-left"></i>
+      </button>
+      <span id="spa">1</span>
+      <button
+        type="button"
+        class="layui-btn layui-btn-sm layui-btn-primary"
+        id="right">
+        <i class="layui-icon layui-icon-right"></i>
+      </button>
+    </div>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+  <script>
+    $(document).ready(function () {
+      var photos = [
+        "https://ts1.cn.mm.bing.net/th/id/R-C.a0c89b5548de9df0858d08adab70b8da?rik=KngHfVANnfa4Ww&riu=http%3a%2f%2fseopic.699pic.com%2fphoto%2f50082%2f1854.jpg_wh1200.jpg&ehk=Rgu4s4B79zqU7JK4myoyp4FrEjiYevMvIOhVmSXXZnY%3d&risl=&pid=ImgRaw&r=0",
+        "https://bpic.588ku.com/back_origin_min_pic/19/12/04/c09c7eef8595101ffc775f8e723c31e4.jpg",
+        "https://ts1.cn.mm.bing.net/th/id/R-C.115c54a2f753b9cef5c2e3ce28137e30?rik=mJFmO9fzx8FOnQ&riu=http%3a%2f%2fimage.qianye88.com%2fpic%2f5b45e8b8d9ac2fab538fbc212309ef11&ehk=1Gt%2bMLA5m3jGQhtL4BTdDVYIfrigCB5qBl9YhT46QPo%3d&risl=&pid=ImgRaw&r=0",
+      ];
+      var photo = localStorage.getItem("background-photo");
+      if (photo) {
+        $("body").css("background-image", "url(" + photo + ")");
+      }
+      $("#background-color").click(function () {
+        // alert("你好");
+        var index = Math.floor(Math.random() * photos.length);
+        var photo = photos[index];
+        $("body").css("background-image", "url(" + photo + ")");
+        localStorage.setItem("background-photo", photo);
+      });
+      showlist();
+    });
+    $("#succes").click(function () {
+      // alert("你想查询什么");
+      let index = event.target.dataset.id;
+      console.log(index);
+      $.ajax({
+        url: "http://mp3.zzgoodqc.cn/api/songs/" + index,
+        type: "get",
+        dataType: "json",
+        success: function (res) {
+          console.log(res);
+          showlist();
+        },
+      });
+    });
+    $("form").on("submit", function () {
+      //添加
+      event.preventDefault();
+
+      $.ajax({
+        method: "POST",
+        url: "http://mp3.zzgoodqc.cn/api/songs",
+        dataType: "JSON",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify({
+          title: $("#search-name").val(),
+          artist: $("#search-atist").val(),
+          album: $("#search-album").val(),
+          year: $("#number").val(),
+          genre: $("#search-mold").val(),
+        }),
+
+        success: function (res) {
+          // console.log(res);
+
+          showlist();
+        },
+      });
+    });
+    //添加输入框
+    $("#addceil").click(function () {
+      $("#add").css("display", "block");
+    });
+    $("#cancel").click(function () {
+      event.preventDefault();
+      // alert("");
+      $("#add").css("display", "none");
+    });
+    //全选
+    $("#show").click(function () {
+      $("tr input[name='shou']").each(function () {
+        $(this).prop("checked", $("#show").prop("checked"));
+      });
+      //   console.log($("tr input[name='shou']"));
+    });
+    //删除
+    $("tbody").on("click", function () {
+      // alert("删除成功");
+      // console.log(event.target.dataset.id);
+      let index = event.target.dataset.id;
+      if (event.target.nodeName == "BUTTON") {
+        if (event.target.innerHTML == "删除") {
+          // console.log(666);
+
+          $.ajax({
+            url: "http://81.68.107.245/api/songs/" + index,
+            type: "delete",
+            dataType: "json",
+            success: function (res) {
+              confirm("确定要删除吗");
+
+              showlist();
+            },
+          });
+        }
+      }
+    });
+    //渲染
+    let page = 1,
+      pageSize;
+
+    $("#right").click(function () {
+      page++;
+      showlist();
+    });
+    $("#left").click(function () {
+      page--;
+      showlist();
+    });
+    function showlist() {
+      $.ajax({
+        type: "get",
+        url: "http://81.68.107.245/api/songs?page=" + page + "&pageSize=15 ",
+        dataType: "json",
+        success: function (res) {
+          let str = "";
+          let arr = res.data;
+          arr.forEach((item, index) => {
+            str += `
+             <tr>
+            <td><input type="checkbox" name="shou" id="" /></td>
+            <td>${item.id}</td>
+            <td>${item.title}</td>
+            <td>${item.artist}</td>
+            <td>${item.album}</td>
+            <td>${item.year}</td>
+            <td>${item.genre}</td>
+            <td class="layui-btn-group">
+              <button class="layui-btn" >查看</button>
+              <button class="layui-btn" data-id="${item.id}">删除</button>
+              <button class="layui-btn">更新</button>
+            </td>
+          </tr>
+            `;
+          });
+          $("tbody").html(str);
+          $("#spa").text(page);
+          // console.log(page);
+        },
+      });
+    }
+  </script>
+</html>
