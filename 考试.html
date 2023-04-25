@@ -351,7 +351,7 @@
           // console.log(666);
 
           $.ajax({
-            url: "http://81.68.107.245/api/songs/" + index,
+            url: "https://mp3.zzgoodqc.cn/api/songs/" + index,
             type: "delete",
             dataType: "json",
             success: function (res) {
@@ -378,7 +378,7 @@
     function showlist() {
       $.ajax({
         type: "get",
-        url: "http://81.68.107.245/api/songs?page=" + page + "&pageSize=15 ",
+        url: "https://mp3.zzgoodqc.cn/api/songs?page=" + page + "&pageSize=15 ",
         dataType: "json",
         success: function (res) {
           let str = "";
